@@ -1,4 +1,4 @@
-import { createPublicClient, http, stringToHex } from "viem";
+import { createPublicClient, http, stringToHex, getAddress } from "viem";
 import { getChain } from "../../../../lib/chains.js";
 
 const DATA_REGISTRY_ABI = [
@@ -54,8 +54,10 @@ export default async function handler(req, res) {
 
     const keyBytes32 = stringToHex(key, { size: 32 });
 
+    const checksumAddr = getAddress(chainInfo.registryAddress);
+
     const result = await client.readContract({
-      address: chainInfo.registryAddress,
+      address: checksumAddr,
       abi: DATA_REGISTRY_ABI,
       functionName: "getEntry",
       args: [keyBytes32],

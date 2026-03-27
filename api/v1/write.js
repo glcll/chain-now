@@ -118,9 +118,18 @@ export default async function handler(req, res) {
     webhookSecret: WEBHOOK_SECRET,
   };
 
-  triggerWorkflow(workflowPayload).catch((err) => {
+  try {
+    await triggerWorkflow(workflowPayload);
+  } catch (err) {
     console.error(`Failed to trigger CRE workflow for ${txId}:`, err);
-  });
+    record.status = "failed";
+    record.errorMessage = "Failed to submit to CRE workflow. Please try again.";
+    try { await kvSet(`write:${txId}`, record, 86400); } catch (_) {}
+    return res.status(502).json({
+      error: "Failed to submit write to the Chainlink network.",
+      txId,
+    });
+  }
 
   return res.status(202).json({
     txId,

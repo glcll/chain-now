@@ -1,4 +1,4 @@
-import { createPublicClient, http, stringToHex } from "viem";
+import { createPublicClient, http, stringToHex, getAddress } from "viem";
 import { getChain, explorerTxUrl } from "../../../lib/chains.js";
 
 const KV_REST_API_URL = process.env.KV_REST_API_URL;
@@ -49,9 +49,10 @@ async function checkOnchain(record) {
   try {
     const client = createPublicClient({ transport: http(chainInfo.rpcUrl) });
     const keyBytes32 = stringToHex(record.key, { size: 32 });
+    const checksumAddr = getAddress(chainInfo.registryAddress);
 
     const result = await client.readContract({
-      address: chainInfo.registryAddress,
+      address: checksumAddr,
       abi: DATA_REGISTRY_ABI,
       functionName: "getEntry",
       args: [keyBytes32],
