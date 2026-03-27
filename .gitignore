@@ -1,0 +1,16 @@
+node_modules/
+.vercel/
+.env
+.env.local
+.env*.local
+
+# CRE workflow build artifacts
+cre-workflow/agent-onchain-writer/node_modules/
+cre-workflow/agent-onchain-writer/dist/
+cre-workflow/agent-onchain-writer/*.wasm*
+cre-workflow/.env
+
+# Foundry
+contracts/out/
+contracts/cache/
+contracts/lib/

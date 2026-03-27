@@ -1,0 +1,4 @@
+cre-workflow/
+contracts/
+*.md
+.env.example

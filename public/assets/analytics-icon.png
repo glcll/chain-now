@@ -1,0 +1,15 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 13.8263 13.36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="analytics-graph-bar">
+<path id="Shape" d="M0.5 12.8128H12.8983" stroke="var(--stroke-0, white)" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Shape_2" fill-rule="evenodd" clip-rule="evenodd" d="M1.64003 10.3502H3.20819C3.36561 10.3502 3.49321 10.4727 3.49321 10.6238V12.8128H1.35501V10.6238C1.35501 10.4727 1.48262 10.3502 1.64003 10.3502Z" stroke="var(--stroke-0, white)" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Shape_3" fill-rule="evenodd" clip-rule="evenodd" d="M5.91529 5.42511H7.48346C7.64087 5.42511 7.76848 5.54761 7.76848 5.69872V12.8128H5.63027V5.69872C5.63027 5.54761 5.75788 5.42511 5.91529 5.42511Z" stroke="var(--stroke-0, white)" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Shape_4" fill-rule="evenodd" clip-rule="evenodd" d="M10.1906 7.88766H11.7588C11.9162 7.88766 12.0438 8.01016 12.0438 8.16128V12.8128H9.90619V8.16128C9.90619 8.01037 10.0335 7.88796 10.1906 7.88766Z" stroke="var(--stroke-0, white)" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Shape_5" d="M3.99653 2.89197L1.70669 5.08802" stroke="var(--stroke-0, white)" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Shape_6" d="M8.23074 3.55083L5.56639 2.86678" stroke="var(--stroke-0, white)" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Shape_7" d="M11.6972 1.67055L9.65589 3.20281" stroke="var(--stroke-0, white)" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Oval" fill-rule="evenodd" clip-rule="evenodd" d="M4.77531 3.37352C5.24754 3.37352 5.63036 3.00602 5.63036 2.55267C5.63036 2.09933 5.24754 1.73182 4.77531 1.73182C4.30307 1.73182 3.92025 2.09933 3.92025 2.55267C3.92025 3.00602 4.30307 3.37352 4.77531 3.37352Z" stroke="var(--stroke-0, white)" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Oval_2" fill-rule="evenodd" clip-rule="evenodd" d="M12.4713 2.1417C12.9435 2.1417 13.3263 1.77419 13.3263 1.32085C13.3263 0.867508 12.9435 0.5 12.4713 0.5C11.999 0.5 11.6162 0.867508 11.6162 1.32085C11.6162 1.77419 11.999 2.1417 12.4713 2.1417Z" stroke="var(--stroke-0, white)" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Oval_3" fill-rule="evenodd" clip-rule="evenodd" d="M9.05112 4.60425C9.52335 4.60425 9.90617 4.23675 9.90617 3.7834C9.90617 3.33006 9.52335 2.96255 9.05112 2.96255C8.57888 2.96255 8.19606 3.33006 8.19606 3.7834C8.19606 4.23675 8.57888 4.60425 9.05112 4.60425Z" stroke="var(--stroke-0, white)" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Oval_4" fill-rule="evenodd" clip-rule="evenodd" d="M1.35505 6.65691C1.82729 6.65691 2.21011 6.2894 2.21011 5.83606C2.21011 5.38271 1.82729 5.01521 1.35505 5.01521C0.88282 5.01521 0.5 5.38271 0.5 5.83606C0.5 6.2894 0.88282 6.65691 1.35505 6.65691Z" stroke="var(--stroke-0, white)" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

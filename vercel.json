@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/login", "destination": "/login.html" },
+    { "source": "/api/v1/status/:id", "destination": "/api/v1/status/[id]" },
+    { "source": "/api/v1/read/:chain/:key", "destination": "/api/v1/read/[chain]/[key]" }
+  ]
+}

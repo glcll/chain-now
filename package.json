@@ -1,0 +1,14 @@
+{
+  "name": "chain-now",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Instant onchain writes for agents — powered by Chainlink CRE",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel deploy --prod"
+  },
+  "dependencies": {
+    "jose": "^6.0.0",
+    "viem": "^2.0.0"
+  }
+}

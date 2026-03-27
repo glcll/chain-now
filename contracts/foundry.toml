@@ -1,0 +1,14 @@
+[profile.default]
+src = "src"
+script = "script"
+out = "out"
+libs = ["lib"]
+solc_version = "0.8.26"
+
+[rpc_endpoints]
+sepolia = "https://ethereum-sepolia-rpc.publicnode.com"
+arbitrum_sepolia = "https://arbitrum-sepolia-rpc.publicnode.com"
+base_sepolia = "https://base-sepolia-rpc.publicnode.com"
+op_sepolia = "https://optimism-sepolia-rpc.publicnode.com"
+polygon_amoy = "https://polygon-amoy-bor-rpc.publicnode.com"
+avalanche_fuji = "https://avalanche-fuji-c-chain-rpc.publicnode.com"
