@@ -560,6 +560,136 @@
       .chains-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
     }
 
+    /* ─── Agent skill section ─── */
+    .skill-install-box {
+      max-width: 640px;
+      margin: 0 auto;
+      background: var(--bg-code);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .skill-install-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: rgba(30, 41, 59, 0.5);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-install-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .skill-install-body {
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .skill-install-prompt {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--text-muted);
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .skill-install-cmd {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--accent-bright);
+      white-space: nowrap;
+    }
+
+    .skill-agents {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
+    .skill-agent-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: border-color 0.2s;
+    }
+
+    .skill-agent-chip:hover {
+      border-color: var(--border-glow);
+      color: var(--text-primary);
+    }
+
+    .skill-agent-chip svg {
+      width: 14px;
+      height: 14px;
+      opacity: 0.6;
+    }
+
+    .skill-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .skill-feature {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .skill-feature-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(55, 91, 210, 0.3);
+      margin-bottom: 12px;
+    }
+
+    .skill-feature-icon svg {
+      width: 18px;
+      height: 18px;
+      color: var(--accent-bright);
+    }
+
+    .skill-feature h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .skill-feature p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .skill-features { grid-template-columns: 1fr; }
+      .skill-install-body { flex-direction: column; align-items: flex-start; }
+    }
+
     /* ─── Staggered entrance animation ─── */
     .animate-in {
       opacity: 0;
@@ -594,6 +724,7 @@
       <a href="#quickstart">Quick Start</a>
       <a href="#api">API</a>
       <a href="#chains">Chains</a>
+      <a href="#skill">Agent Skill</a>
       <a href="https://docs.chain.link/cre" target="_blank">CRE Docs</a>
     </div>
   </nav>
@@ -840,6 +971,86 @@ curl -sS https://chain.now/api/v1/read/ethereum-sepolia/my-agent | jq .
     </div>
   </section>
 
+  <!-- Agent Skill -->
+  <section class="section" id="skill">
+    <div class="section-inner" style="text-align: center;">
+      <div class="section-label">Agent Skill</div>
+      <h2 class="section-title">Give your AI agent onchain powers</h2>
+      <p class="section-desc" style="margin-left: auto; margin-right: auto;">
+        Install the chain.now skill and any AI coding assistant instantly knows how to write data onchain using our API.
+      </p>
+
+      <div class="skill-install-box animate-in">
+        <div class="skill-install-header">
+          <span class="skill-install-label">terminal</span>
+          <button class="code-copy" onclick="copySkillCmd(this)">Copy</button>
+        </div>
+        <div class="skill-install-body">
+          <span class="skill-install-prompt">$</span>
+          <span class="skill-install-cmd" id="skill-cmd">npx skills add glcll/chain-now -g -y</span>
+        </div>
+      </div>
+
+      <div class="skill-agents animate-in delay-1">
+        <div class="skill-agent-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          Cursor
+        </div>
+        <div class="skill-agent-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0022 16z"/></svg>
+          Claude Code
+        </div>
+        <div class="skill-agent-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6m-7-3.5l5.2-3m3.6-2.1l5.2-3M5 7.5l5.2 3m3.6 2.1l5.2 3"/></svg>
+          Codex
+        </div>
+        <div class="skill-agent-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+          Windsurf
+        </div>
+        <div class="skill-agent-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3a3 3 0 00-3 3v12a3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3H6a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3V6a3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3h12a3 3 0 003-3 3 3 0 00-3-3z"/></svg>
+          Amp
+        </div>
+        <div class="skill-agent-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 12h10M12 7v10"/></svg>
+          Cline
+        </div>
+      </div>
+
+      <div class="skill-features animate-in delay-2">
+        <div class="skill-feature">
+          <div class="skill-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <h4>Full API Reference</h4>
+          <p>Write, track, read endpoints with examples in Python, bash, and JS</p>
+        </div>
+        <div class="skill-feature">
+          <div class="skill-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h4>Integration Patterns</h4>
+          <p>Fire-and-forget, write-and-confirm, read-after-write recipes</p>
+        </div>
+        <div class="skill-feature">
+          <div class="skill-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>CRE Architecture</h4>
+          <p>Build your own CRE-backed service with ETH-signed JWT auth and gotchas</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 40px;">
+        <a href="https://github.com/glcll/chain-now/tree/main/chain-now-skill" target="_blank" class="btn btn-secondary" style="display: inline-flex;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <p class="footer-text">
@@ -854,6 +1065,14 @@ curl -sS https://chain.now/api/v1/read/ethereum-sepolia/my-agent | jq .
       const pre = btn.closest('.code-block').querySelector('pre');
       const text = pre.innerText;
       navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    function copySkillCmd(btn) {
+      const cmd = document.getElementById('skill-cmd').textContent;
+      navigator.clipboard.writeText(cmd).then(() => {
         btn.textContent = 'Copied!';
         setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
       });
