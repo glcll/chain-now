@@ -1,4 +1,4 @@
-const { explorerTxUrl } = require("../../lib/chains");
+import { explorerTxUrl } from "../../lib/chains.js";
 
 const KV_REST_API_URL = process.env.KV_REST_API_URL;
 const KV_REST_API_TOKEN = process.env.KV_REST_API_TOKEN;
@@ -27,7 +27,7 @@ async function kvSet(key, value, ttlSeconds) {
   if (!res.ok) throw new Error(`KV SET failed: ${res.status}`);
 }
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed. Use POST." });
   }
@@ -62,4 +62,4 @@ module.exports = async function handler(req, res) {
     console.error("Webhook processing error:", err);
     return res.status(500).json({ error: "Failed to process webhook." });
   }
-};
+}

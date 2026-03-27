@@ -1,6 +1,6 @@
-const { listChains } = require("../../lib/chains");
+import { listChains } from "../../lib/chains.js";
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== "GET") {
     return res.status(405).json({ error: "Method not allowed. Use GET." });
   }
@@ -14,4 +14,4 @@ module.exports = async function handler(req, res) {
     total: chains.length,
     available: chains.filter((c) => c.available).length,
   });
-};
+}

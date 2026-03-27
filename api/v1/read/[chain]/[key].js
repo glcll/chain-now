@@ -1,5 +1,5 @@
-const { createPublicClient, http, stringToHex, hexToString, decodeAbiParameters } = require("viem");
-const { getChain } = require("../../../../lib/chains");
+import { createPublicClient, http, stringToHex } from "viem";
+import { getChain } from "../../../../lib/chains.js";
 
 const DATA_REGISTRY_ABI = [
   {
@@ -16,7 +16,7 @@ const DATA_REGISTRY_ABI = [
   },
 ];
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== "GET") {
     return res.status(405).json({ error: "Method not allowed. Use GET." });
   }
@@ -105,4 +105,4 @@ module.exports = async function handler(req, res) {
       details: err.message,
     });
   }
-};
+}

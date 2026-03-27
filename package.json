@@ -1,6 +1,7 @@
 {
   "name": "chain-now",
   "version": "1.0.0",
+  "type": "module",
   "private": true,
   "description": "Instant onchain writes for agents — powered by Chainlink CRE",
   "scripts": {

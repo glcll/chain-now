@@ -1,5 +1,5 @@
-const { getChain, explorerTxUrl } = require("../../lib/chains");
-const { triggerWorkflow } = require("../../lib/cre-trigger");
+import { getChain, explorerTxUrl } from "../../lib/chains.js";
+import { triggerWorkflow } from "../../lib/cre-trigger.js";
 
 const KV_REST_API_URL = process.env.KV_REST_API_URL;
 const KV_REST_API_TOKEN = process.env.KV_REST_API_TOKEN;
@@ -26,7 +26,7 @@ async function kvSet(key, value, ttlSeconds) {
   if (!res.ok) throw new Error(`KV SET failed: ${res.status}`);
 }
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed. Use POST." });
   }
@@ -96,14 +96,6 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: "Failed to store write request." });
   }
 
-  const workflowPayload = {
-    txId,
-    chain: chainInfo.selectorName,
-    key,
-    value: valueStr,
-    webhookSecret: WEBHOOK_SECRET,
-  };
-
   const creConfigured =
     process.env.CRE_WORKFLOW_ID &&
     !process.env.CRE_WORKFLOW_ID.startsWith("PLACEHOLDER");
@@ -118,6 +110,14 @@ module.exports = async function handler(req, res) {
     });
   }
 
+  const workflowPayload = {
+    txId,
+    chain: chainInfo.selectorName,
+    key,
+    value: valueStr,
+    webhookSecret: WEBHOOK_SECRET,
+  };
+
   triggerWorkflow(workflowPayload).catch((err) => {
     console.error(`Failed to trigger CRE workflow for ${txId}:`, err);
   });
@@ -131,4 +131,4 @@ module.exports = async function handler(req, res) {
     statusUrl: `${BASE_URL}/api/v1/status/${txId}`,
     readUrl: `${BASE_URL}/api/v1/read/${chain}/${encodeURIComponent(key)}`,
   });
-};
+}
