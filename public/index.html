@@ -370,9 +370,10 @@
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 32px 28px;
+      padding: 32px;
       transition: border-color 0.2s, transform 0.2s;
       text-align: left;
+      min-width: 0;
     }
 
     .benefit-card:hover {
@@ -410,6 +411,7 @@
       border-radius: 8px;
       padding: 10px 14px;
       font-size: 12px;
+      overflow: hidden;
     }
 
     .benefit-compare .compare-before {
@@ -439,7 +441,8 @@
       font-size: 11.5px;
       font-family: 'JetBrains Mono', monospace;
       color: var(--text-secondary);
-      overflow-x: auto;
+      overflow: hidden;
+      text-overflow: ellipsis;
       white-space: nowrap;
     }
 
