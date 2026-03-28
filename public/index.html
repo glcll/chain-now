@@ -912,7 +912,7 @@
           </div>
           <div class="code-body">
 <pre><span class="comment"># Write data to Ethereum Sepolia — that's it.</span>
-curl <span class="string">-X POST</span> https://chain.now/api/v1/write \
+curl <span class="string">-X POST</span> https://chain-now.vercel.app/api/v1/write \
   <span class="property">-H</span> <span class="string">"Content-Type: application/json"</span> \
   <span class="property">-d</span> <span class="string">'{
     "chain": "ethereum-sepolia",
@@ -925,7 +925,7 @@ curl <span class="string">-X POST</span> https://chain.now/api/v1/write \
   "txId": "tx_a8f2k9m3x7p1",
   "chain": "ethereum-sepolia",
   "status": "pending",
-  "statusUrl": "https://chain.now/api/v1/status/tx_a8f2k9m3x7p1"
+  "statusUrl": "https://chain-now.vercel.app/api/v1/status/tx_a8f2k9m3x7p1"
 }</span></pre>
           </div>
         </div>
@@ -1109,7 +1109,7 @@ curl <span class="string">-X POST</span> https://chain.now/api/v1/write \
           </div>
           <div class="code-body">
 <pre><span class="comment"># 1. Write data onchain</span>
-<span class="property">TX</span>=$(curl -sS <span class="string">-X POST</span> https://chain.now/api/v1/write \
+<span class="property">TX</span>=$(curl -sS <span class="string">-X POST</span> https://chain-now.vercel.app/api/v1/write \
   <span class="property">-H</span> <span class="string">"Content-Type: application/json"</span> \
   <span class="property">-d</span> <span class="string">'{"chain":"ethereum-sepolia","key":"my-agent","value":{"alive":true}}'</span>)
 
@@ -1118,13 +1118,13 @@ echo <span class="string">"Submitted: $TX_ID"</span>
 
 <span class="comment"># 2. Poll for confirmation</span>
 <span class="keyword">while</span> <span class="keyword">true</span>; <span class="keyword">do</span>
-  <span class="property">STATUS</span>=$(curl -sS https://chain.now/api/v1/status/$TX_ID | jq -r .status)
+  <span class="property">STATUS</span>=$(curl -sS https://chain-now.vercel.app/api/v1/status/$TX_ID | jq -r .status)
   [ <span class="string">"$STATUS"</span> != <span class="string">"pending"</span> ] && <span class="keyword">break</span>
   sleep <span class="number">5</span>
 <span class="keyword">done</span>
 
 <span class="comment"># 3. Read it back</span>
-curl -sS https://chain.now/api/v1/read/ethereum-sepolia/my-agent | jq .
+curl -sS https://chain-now.vercel.app/api/v1/read/ethereum-sepolia/my-agent | jq .
 <span class="comment"># → { "value": { "alive": true }, "timestamp": 1711500000, ... }</span></pre>
           </div>
         </div>
