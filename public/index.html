@@ -31,7 +31,7 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
 
     body {
       font-family: var(--font-display);
@@ -39,6 +39,7 @@
       color: var(--text-primary);
       -webkit-font-smoothing: antialiased;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     /* ─── Noise texture overlay ─── */
@@ -114,10 +115,20 @@
       color: var(--text-secondary);
       text-decoration: none;
       transition: color 0.2s;
+      white-space: nowrap;
     }
 
     .nav-links a:hover {
       color: var(--text-primary);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-secondary);
+      padding: 4px;
     }
 
     /* ─── Hero ─── */
@@ -127,6 +138,7 @@
       text-align: center;
       background: var(--gradient-hero);
       overflow: hidden;
+      width: 100%;
     }
 
     .hero-glow {
@@ -264,11 +276,14 @@
       position: relative;
       z-index: 1;
       padding: 100px 40px;
+      width: 100%;
+      overflow: hidden;
     }
 
     .section-inner {
       max-width: 1100px;
       margin: 0 auto;
+      width: 100%;
     }
 
     .section-label {
@@ -307,6 +322,7 @@
       border-radius: 16px;
       padding: 32px;
       transition: border-color 0.2s, transform 0.2s;
+      min-width: 0;
     }
 
     .flow-card:hover {
@@ -452,6 +468,7 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       overflow: hidden;
+      max-width: 100%;
     }
 
     .code-header {
@@ -574,6 +591,7 @@
       padding: 28px;
       margin-bottom: 16px;
       transition: border-color 0.2s;
+      overflow: hidden;
     }
 
     .api-endpoint:hover {
@@ -585,6 +603,7 @@
       align-items: center;
       gap: 12px;
       margin-bottom: 12px;
+      flex-wrap: wrap;
     }
 
     .api-method {
@@ -636,17 +655,52 @@
     }
 
     /* ─── Responsive ─── */
+
+    @media (max-width: 1024px) {
+      .flow-grid { grid-template-columns: 1fr 1fr; }
+      .benefits-grid { grid-template-columns: 1fr 1fr; }
+      .benefit-card:last-child { grid-column: 1 / -1; max-width: 50%; justify-self: center; }
+      .flow-card:last-child { grid-column: 1 / -1; max-width: 50%; justify-self: center; }
+    }
+
     @media (max-width: 768px) {
-      .nav { padding: 0 20px; }
-      .hero { padding: 120px 20px 60px; }
-      .hero h1 { font-size: 36px; }
-      .hero-subtitle { font-size: 16px; }
+      .nav { padding: 0 16px; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: rgba(10, 14, 26, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 16px 24px; gap: 16px; }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: block; }
+
+      .hero { padding: 110px 20px 50px; }
+      .hero h1 { font-size: 32px; }
+      .hero-subtitle { font-size: 15px; }
       .hero-actions { flex-direction: column; align-items: center; }
-      .section { padding: 60px 20px; }
-      .section-title { font-size: 28px; }
+      .hero-demo { margin-top: 40px; }
+
+      .section { padding: 60px 16px; }
+      .section-title { font-size: 26px; }
+      .section-desc { font-size: 15px; }
+
       .flow-grid { grid-template-columns: 1fr; }
+      .flow-card:last-child { grid-column: auto; max-width: 100%; justify-self: auto; }
       .benefits-grid { grid-template-columns: 1fr; }
-      .chains-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+      .benefit-card:last-child { grid-column: auto; max-width: 100%; justify-self: auto; }
+      .chains-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+
+      .api-endpoint { padding: 20px 16px; }
+      .api-path { font-size: 13px; word-break: break-all; }
+
+      .code-body { padding: 16px 12px; }
+      .code-body pre { font-size: 11px; }
+
+      .footer { padding: 32px 16px; }
+      .footer-text { font-size: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 28px; }
+      .hero-subtitle { font-size: 14px; }
+      .chains-grid { grid-template-columns: 1fr; }
+      .skill-features { grid-template-columns: 1fr; }
+      .hero-badge { font-size: 11px; padding: 5px 12px; }
     }
 
     /* ─── Agent skill section ─── */
@@ -777,6 +831,7 @@
     @media (max-width: 768px) {
       .skill-features { grid-template-columns: 1fr; }
       .skill-install-body { flex-direction: column; align-items: flex-start; }
+      .skill-install-cmd { font-size: 12px; word-break: break-all; white-space: normal; }
     }
 
     /* ─── Staggered entrance animation ─── */
@@ -809,6 +864,9 @@
       </div>
       <div class="nav-logo-text">chain<span>.now</span></div>
     </a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
     <div class="nav-links">
       <a href="#quickstart">Quick Start</a>
       <a href="#api">API</a>
@@ -1262,6 +1320,12 @@ curl -sS https://chain.now/api/v1/read/ethereum-sepolia/my-agent | jq .
         el.style.animationPlayState = 'paused';
         observer.observe(el);
       }
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('open');
+      });
     });
   </script>
 
