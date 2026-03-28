@@ -137,6 +137,10 @@ To add support for a new chain:
 3. Add the registry address to the CRE workflow's config
 4. Redeploy the CRE workflow (`cre workflow deploy`)
 
+## Disclaimer
+
+This project is not affiliated with, endorsed by, or sponsored by Chainlink or Chainlink Labs. Use at your own risk.
+
 ## License
 
 MIT
