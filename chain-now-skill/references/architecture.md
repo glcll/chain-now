@@ -2,6 +2,8 @@
 
 This reference covers how chain.now was built, the lessons learned, and how to replicate the pattern for your own CRE-powered applications.
 
+> **Note:** chain.now is currently live on **Ethereum Sepolia** only. The architecture is chain-agnostic and designed for 22+ EVM chains — additional deployments are coming soon.
+
 ## System Components
 
 ### 1. DataRegistry Consumer Contract (Solidity)
