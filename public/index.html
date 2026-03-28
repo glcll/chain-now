@@ -359,6 +359,90 @@
     .flow-card code .key { color: #89ddff; }
     .flow-card code .num { color: #f78c6c; }
 
+    /* ─── Benefits ─── */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .benefit-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: border-color 0.2s, transform 0.2s;
+      text-align: left;
+    }
+
+    .benefit-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-2px);
+    }
+
+    .benefit-icon {
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .benefit-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .benefit-card > p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .benefit-compare {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .benefit-compare .compare-before,
+    .benefit-compare .compare-after {
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+    }
+
+    .benefit-compare .compare-before {
+      background: rgba(220, 38, 38, 0.06);
+      border: 1px solid rgba(220, 38, 38, 0.15);
+    }
+
+    .benefit-compare .compare-after {
+      background: rgba(52, 211, 153, 0.06);
+      border: 1px solid rgba(52, 211, 153, 0.15);
+    }
+
+    .compare-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .compare-before .compare-label { color: #f87171; }
+    .compare-after .compare-label { color: #34d399; }
+
+    .benefit-compare code {
+      display: block;
+      font-size: 11.5px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-secondary);
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
     /* ─── Code block ─── */
     .code-block {
       background: var(--bg-code);
@@ -558,6 +642,7 @@
       .section { padding: 60px 20px; }
       .section-title { font-size: 28px; }
       .flow-grid { grid-template-columns: 1fr; }
+      .benefits-grid { grid-template-columns: 1fr; }
       .chains-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
     }
 
@@ -821,6 +906,85 @@ curl <span class="string">-X POST</span> https://chain.now/api/v1/write \
     </div>
   </section>
 
+  <!-- Benefits -->
+  <section class="section" id="benefits" style="background: rgba(17, 24, 39, 0.5);">
+    <div class="section-inner">
+      <div class="section-label">Why Chain Now</div>
+      <h2 class="section-title">Skip the blockchain plumbing</h2>
+      <p class="section-desc">
+        Writing onchain traditionally means juggling RPCs, wallets, and gas tokens. Chain Now handles all of it so your agent can focus on what it does best.
+      </p>
+
+      <div class="benefits-grid">
+        <div class="benefit-card animate-in">
+          <div class="benefit-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 17H7A5 5 0 0 1 7 7h2"/>
+              <path d="M15 7h2a5 5 0 1 1 0 10h-2"/>
+              <line x1="8" y1="12" x2="16" y2="12"/>
+              <line x1="12" y1="12" x2="12" y2="12"/>
+            </svg>
+          </div>
+          <h3>No RPC URLs</h3>
+          <p>Forget about finding, configuring, and managing RPC endpoints for every chain. Send your data to one URL — we route it to the right network.</p>
+          <div class="benefit-compare">
+            <div class="compare-before">
+              <span class="compare-label">Traditional</span>
+              <code>const provider = new JsonRpcProvider("https://eth-sepolia.g.alch...")</code>
+            </div>
+            <div class="compare-after">
+              <span class="compare-label">Chain Now</span>
+              <code>POST /api/v1/write { "chain": "ethereum-sepolia" }</code>
+            </div>
+          </div>
+        </div>
+
+        <div class="benefit-card animate-in delay-1">
+          <div class="benefit-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="6" width="20" height="12" rx="3"/>
+              <path d="M2 10h20"/>
+              <path d="M6 14h4"/>
+            </svg>
+          </div>
+          <h3>No Wallets</h3>
+          <p>No private keys to secure, no seed phrases to back up, no wallet SDKs to integrate. Chain Now signs and submits transactions through the Chainlink DON.</p>
+          <div class="benefit-compare">
+            <div class="compare-before">
+              <span class="compare-label">Traditional</span>
+              <code>const wallet = new Wallet(PRIVATE_KEY, provider)</code>
+            </div>
+            <div class="compare-after">
+              <span class="compare-label">Chain Now</span>
+              <code>curl -X POST .../write -d '{"key":"x","value":42}'</code>
+            </div>
+          </div>
+        </div>
+
+        <div class="benefit-card animate-in delay-2">
+          <div class="benefit-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <h3>No Gas</h3>
+          <p>No need to acquire native tokens, estimate gas limits, or handle failed transactions from underpriced fees. Chain Now manages gas entirely behind the scenes.</p>
+          <div class="benefit-compare">
+            <div class="compare-before">
+              <span class="compare-label">Traditional</span>
+              <code>await wallet.sendTransaction({ gasLimit, maxFeePerGas, ... })</code>
+            </div>
+            <div class="compare-after">
+              <span class="compare-label">Chain Now</span>
+              <code>{ "status": "confirmed", "onchainTimestamp": "..." }</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- API Reference -->
   <section class="section" id="api" style="background: rgba(17, 24, 39, 0.5);">
     <div class="section-inner">
@@ -1059,11 +1223,7 @@ curl -sS https://chain.now/api/v1/read/ethereum-sepolia/my-agent | jq .
   <footer class="footer">
     <p class="footer-text">
       Built on <a href="https://docs.chain.link/cre" target="_blank">Chainlink CRE</a>
-      &middot; Powered by the Decentralized Oracle Network
-      &middot; <a href="https://chain.link" target="_blank">chain.link</a>
-    </p>
-    <p class="footer-text" style="margin-top: 0.75rem; font-size: 0.7rem; opacity: 0.45; max-width: 540px; margin-left: auto; margin-right: auto;">
-      This project is not affiliated with, endorsed by, or sponsored by Chainlink or Chainlink Labs. Use at your own risk.
+      &middot; This project is not affiliated with, endorsed by, or sponsored by Chainlink or Chainlink Labs. Use at your own risk.
     </p>
   </footer>
 

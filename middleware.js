@@ -32,8 +32,6 @@ export default function middleware(request) {
   const path = url.pathname;
 
   if (
-    path === "/login" ||
-    path === "/login.html" ||
     path.startsWith("/api/v1/chains") ||
     path === "/api/v1/webhook"
   ) {
@@ -83,13 +81,6 @@ export default function middleware(request) {
 
   if (path.startsWith("/assets/")) {
     return;
-  }
-
-  const cookie = request.headers.get("cookie") || "";
-  const hasAuth = cookie.includes("site_auth=authenticated");
-
-  if (!hasAuth) {
-    return Response.redirect(new URL("/login", request.url).toString(), 302);
   }
 }
 
