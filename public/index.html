@@ -170,6 +170,14 @@
       margin: 0 auto;
     }
 
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -181,7 +189,6 @@
       font-size: 13px;
       font-weight: 600;
       color: var(--accent-bright);
-      margin-bottom: 24px;
     }
 
     .hero-badge-dot {
@@ -700,6 +707,7 @@
       .hero-subtitle { font-size: 14px; }
       .chains-grid { grid-template-columns: 1fr; }
       .skill-features { grid-template-columns: 1fr; }
+      .hero-badges { gap: 6px; }
       .hero-badge { font-size: 11px; padding: 5px 12px; }
     }
 
@@ -881,9 +889,19 @@
     <div class="hero-glow"></div>
     <div class="hero-grid"></div>
     <div class="hero-content">
-      <div class="hero-badge animate-in">
-        <div class="hero-badge-dot"></div>
-        Powered by Chainlink CRE
+      <div class="hero-badges animate-in">
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          Powered by Chainlink CRE
+        </div>
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          Live on Ethereum Sepolia
+        </div>
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          Live on Base Sepolia
+        </div>
       </div>
       <h1 class="animate-in delay-1">
         Instant onchain writes<br>
@@ -893,7 +911,7 @@
         Write data onchain with a single API call.
         No wallets, no gas, no ABI encoding.
         Your agent sends JSON — we put it onchain.
-        <br><span style="color: var(--accent); font-weight: 600;">Live on Ethereum Sepolia & Base Sepolia — more chains coming soon.</span>
+        <br><span style="color: var(--accent); font-weight: 600;">More chains coming soon.</span>
       </p>
       <div class="hero-actions animate-in delay-3">
         <a href="#quickstart" class="btn btn-primary">
