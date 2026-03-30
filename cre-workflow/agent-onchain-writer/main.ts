@@ -14,12 +14,12 @@ import { encodeAbiParameters, parseAbiParameters, stringToHex, toHex } from "vie
 
 export type Config = {
   authorizedEVMAddress: string;
-  registryAddress: string;
-  chainSelectorName: string;
   gasLimit: string;
 };
 
 type WriteRequest = {
+  chain: string;
+  registryAddress: string;
   key: string;
   value: string;
 };
@@ -31,15 +31,19 @@ function decodeJson<T>(input: Uint8Array): T {
 
 export const onHttpTrigger = (runtime: Runtime<Config>, payload: HTTPPayload): string => {
   const request = decodeJson<WriteRequest>(payload.input);
-  runtime.log(`Write request: key=${request.key}`);
+  runtime.log(`Write request: chain=${request.chain}, key=${request.key}`);
+
+  if (!request.chain || !request.registryAddress) {
+    throw new Error("Missing required fields: chain and registryAddress must be provided in the payload");
+  }
 
   const network = getNetwork({
     chainFamily: "evm",
-    chainSelectorName: runtime.config.chainSelectorName,
+    chainSelectorName: request.chain,
   });
 
   if (!network) {
-    throw new Error(`Network not found: ${runtime.config.chainSelectorName}`);
+    throw new Error(`Network not found: ${request.chain}`);
   }
 
   const evmClient = new EVMClient(network.chainSelector.selector);
@@ -52,7 +56,7 @@ export const onHttpTrigger = (runtime: Runtime<Config>, payload: HTTPPayload): s
     [keyBytes32, valueBytes]
   );
 
-  runtime.log("Generating signed report...");
+  runtime.log(`Generating signed report for ${request.chain}...`);
 
   const reportResponse = runtime
     .report({
@@ -63,11 +67,11 @@ export const onHttpTrigger = (runtime: Runtime<Config>, payload: HTTPPayload): s
     })
     .result();
 
-  runtime.log("Submitting to blockchain...");
+  runtime.log(`Submitting to ${request.chain} at ${request.registryAddress}...`);
 
   const writeResult = evmClient
     .writeReport(runtime, {
-      receiver: runtime.config.registryAddress,
+      receiver: request.registryAddress,
       report: reportResponse,
       gasConfig: {
         gasLimit: runtime.config.gasLimit,

@@ -1,6 +1,4 @@
 {
   "authorizedEVMAddress": "0x3d89B571fe7D400f42Cb75ecffB76eea1eB96DB5",
-  "registryAddress": "0x6833BEECB6F6916b0824a612851Ae12c4d7d2f22",
-  "chainSelectorName": "ethereum-testnet-sepolia",
   "gasLimit": "500000"
 }

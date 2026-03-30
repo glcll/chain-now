@@ -3,7 +3,6 @@ import { triggerWorkflow } from "../../lib/cre-trigger.js";
 
 const KV_REST_API_URL = process.env.KV_REST_API_URL;
 const KV_REST_API_TOKEN = process.env.KV_REST_API_TOKEN;
-const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
 const BASE_URL = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
@@ -113,9 +112,9 @@ export default async function handler(req, res) {
   const workflowPayload = {
     txId,
     chain: chainInfo.selectorName,
+    registryAddress: chainInfo.registryAddress,
     key,
     value: valueStr,
-    webhookSecret: WEBHOOK_SECRET,
   };
 
   try {
