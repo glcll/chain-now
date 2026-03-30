@@ -15,3 +15,9 @@ cre-workflow/.env
 contracts/out/
 contracts/cache/
 contracts/lib/
+.env.prod
+.env.local
+
+contracts/broadcast/
+contracts/cache/
+contracts/foundry.lock
