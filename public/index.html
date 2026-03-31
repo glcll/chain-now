@@ -1002,7 +1002,7 @@ curl <span class="string">-X POST</span> https://chain-now.vercel.app/api/v1/wri
           <div class="flow-step">1</div>
           <h3>Write</h3>
           <p>POST your data with a chain and key. We handle encoding, signing, and gas.</p>
-          <code><span class="kw">POST</span> /api/v1/write<br>{ <span class="key">"chain"</span>: <span class="str">"base"</span>, <span class="key">"key"</span>: <span class="str">"price"</span>, <span class="key">"value"</span>: <span class="num">42</span> }</code>
+          <code><span class="kw">POST</span> /api/v1/write<br>{ <span class="key">"chain"</span>: <span class="str">"base-sepolia"</span>, <span class="key">"key"</span>: <span class="str">"price"</span>, <span class="key">"value"</span>: <span class="num">42</span> }</code>
         </div>
 
         <div class="flow-card animate-in delay-1">
@@ -1016,7 +1016,7 @@ curl <span class="string">-X POST</span> https://chain-now.vercel.app/api/v1/wri
           <div class="flow-step">3</div>
           <h3>Read</h3>
           <p>Read your data back from any chain at any time. Fully verifiable, onchain forever.</p>
-          <code><span class="kw">GET</span> /api/v1/read/base/price<br>{ <span class="key">"value"</span>: <span class="num">42</span>, <span class="key">"timestamp"</span>: <span class="num">1711500000</span> }</code>
+          <code><span class="kw">GET</span> /api/v1/read/base-sepolia/price<br>{ <span class="key">"value"</span>: <span class="num">42</span>, <span class="key">"timestamp"</span>: <span class="num">1711500000</span> }</code>
         </div>
       </div>
     </div>
@@ -1072,7 +1072,7 @@ curl <span class="string">-X POST</span> https://chain-now.vercel.app/api/v1/wri
             </div>
             <div class="compare-after">
               <span class="compare-label">Chain Now</span>
-              <code>curl -X POST .../write -d '{"key":"x","value":42}'</code>
+              <code>POST /api/v1/write { "chain": "ethereum-sepolia", "key":"x","value":42 }</code>
             </div>
           </div>
         </div>
