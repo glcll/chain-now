@@ -2,7 +2,7 @@
 name: chain-now
 description: >-
   Write arbitrary data on-chain via a single REST API call, powered by Chainlink
-  CRE. Currently live on Ethereum Sepolia and Base Sepolia with more chains coming soon. Use when
+  CRE. Currently live on 8 testnets with more chains coming soon. Use when
   an agent needs to persist data on-chain, store key/value pairs on a blockchain,
   write agent state on-chain, or interact with chain.now's API.
 license: MIT
@@ -17,7 +17,7 @@ metadata:
 
 Write data on-chain with a single HTTP call. No wallets, gas, ABI encoding, or blockchain knowledge required.
 
-> **Currently live on Ethereum Sepolia and Base Sepolia.** The architecture supports 22+ EVM chains — additional networks are coming soon.
+> **Currently live on 8 testnets.** The architecture supports 22+ EVM chains — mainnets coming soon.
 
 **Base URL:** `https://chain-now.vercel.app`
 
@@ -48,7 +48,7 @@ Write data on-chain. Returns a `txId` for tracking.
 
 | Field   | Type   | Required | Description |
 |---------|--------|----------|-------------|
-| `chain` | string | yes | Chain slug — currently `ethereum-sepolia` and `base-sepolia` are live |
+| `chain` | string | yes | Chain slug — see Supported Chains section for live chains |
 | `key`   | string | yes | Storage key, max 31 chars (stored as `bytes32`) |
 | `value` | any    | yes | Any JSON value — objects, strings, numbers, arrays |
 
@@ -164,10 +164,16 @@ curl -s https://chain-now.vercel.app/api/v1/read/ethereum-sepolia/agent-result |
 ## Supported Chains
 
 **Live now:**
-- **Ethereum Sepolia** (testnet) — `ethereum-sepolia`
-- **Base Sepolia** (testnet) — `base-sepolia`
+- **Ethereum Sepolia** — `ethereum-sepolia`
+- **Base Sepolia** — `base-sepolia`
+- **Arbitrum Sepolia** — `arbitrum-sepolia`
+- **OP Sepolia** — `optimism-sepolia`
+- **Polygon Amoy** — `polygon-amoy`
+- **Avalanche Fuji** — `avalanche-fuji`
+- **World Chain Sepolia** — `world-chain-sepolia`
+- **Ink Sepolia** — `ink-sepolia`
 
-**Coming soon:** `ethereum`, `arbitrum`, `base`, `optimism`, `polygon`, `avalanche`, `bnb`, `scroll`, `linea`, `sonic`, `world-chain`, `zksync`, `celo`, `gnosis`, `mantle`, `ink`, `arbitrum-sepolia`, `optimism-sepolia`, `polygon-amoy`, `avalanche-fuji`
+**Coming soon:** `ethereum`, `arbitrum`, `base`, `optimism`, `polygon`, `avalanche`, `bnb`, `scroll`, `linea`, `sonic`, `world-chain`, `zksync`, `celo`, `gnosis`, `mantle`, `ink`, `zksync-sepolia`
 
 The architecture supports all 22+ EVM chains in the Chainlink Runtime Environment. Each chain requires a deployed DataRegistry contract. Call `GET /api/v1/chains` for the live list.
 

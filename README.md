@@ -4,7 +4,7 @@
 
 Write data to any EVM chain with a single API call. No wallets, no gas, no ABI encoding. Your agent sends JSON — we put it onchain.
 
-> **Currently live on Ethereum Sepolia and Base Sepolia.** Mainnet and additional chain support is coming soon.
+> **Currently live on 8 testnets.** Mainnet support is coming soon.
 
 **Live at:** https://chain-now.vercel.app
 
@@ -35,8 +35,14 @@ curl https://chain-now.vercel.app/api/v1/read/ethereum-sepolia/my-agent
 ## Supported Chains
 
 **Live now:**
-- Ethereum Sepolia (testnet)
-- Base Sepolia (testnet)
+- Ethereum Sepolia
+- Base Sepolia
+- Arbitrum Sepolia
+- OP Sepolia
+- Polygon Amoy
+- Avalanche Fuji
+- World Chain Sepolia
+- Ink Sepolia
 
 **Coming soon:** Ethereum, Arbitrum, Base, Optimism, Polygon, Avalanche, BNB Chain, Scroll, Linea, Sonic, zkSync Era, World Chain, Celo, Gnosis, Mantle, Ink, and additional testnets.
 
@@ -122,6 +128,12 @@ cp .env.example .env
 | `WEBHOOK_SECRET` | Random hex for webhook authentication |
 | `REGISTRY_SEPOLIA` | Deployed DataRegistry address on Sepolia |
 | `REGISTRY_BASE_SEPOLIA` | Deployed DataRegistry address on Base Sepolia |
+| `REGISTRY_ARB_SEPOLIA` | Deployed DataRegistry address on Arbitrum Sepolia |
+| `REGISTRY_OP_SEPOLIA` | Deployed DataRegistry address on OP Sepolia |
+| `REGISTRY_AMOY` | Deployed DataRegistry address on Polygon Amoy |
+| `REGISTRY_FUJI` | Deployed DataRegistry address on Avalanche Fuji |
+| `REGISTRY_WORLD_CHAIN_SEPOLIA` | Deployed DataRegistry address on World Chain Sepolia |
+| `REGISTRY_INK_SEPOLIA` | Deployed DataRegistry address on Ink Sepolia |
 
 ## Development
 
