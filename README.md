@@ -1,4 +1,4 @@
-# chain.now
+# Chain Now
 
 **Instant onchain writes for agents — powered by [Chainlink CRE](https://docs.chain.link/cre)**
 
@@ -102,7 +102,7 @@ chain-now/
 
 ## Agent Skill
 
-Install the chain.now skill to give any AI coding assistant the knowledge to write data onchain:
+Install the Chain Now skill to give any AI coding assistant the knowledge to write data onchain:
 
 ```bash
 npx skills add glcll/chain-now -g -y

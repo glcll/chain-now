@@ -4,16 +4,16 @@ description: >-
   Write arbitrary data on-chain via a single REST API call, powered by Chainlink
   CRE. Currently live on 8 testnets with more chains coming soon. Use when
   an agent needs to persist data on-chain, store key/value pairs on a blockchain,
-  write agent state on-chain, or interact with chain.now's API.
+  write agent state on-chain, or interact with Chain Now's API.
 license: MIT
 compatibility: Claude Code, Cursor, Codex, Windsurf, and any agent supporting https://agentskills.io/specification
 allowed-tools: Read WebFetch Write Edit Bash Shell
 metadata:
-  purpose: On-chain data writes for AI agents via chain.now API
+  purpose: On-chain data writes for AI agents via Chain Now API
   version: "1.0"
 ---
 
-# chain.now — Instant On-chain Writes for Agents
+# Chain Now — Instant On-chain Writes for Agents
 
 Write data on-chain with a single HTTP call. No wallets, gas, ABI encoding, or blockchain knowledge required.
 
@@ -192,7 +192,7 @@ Agent → REST API (Vercel) → CRE Gateway → Chainlink DON → DataRegistry C
 
 ## Building Your Own CRE Integration
 
-For details on how chain.now was built (CRE workflow, consumer contract, ETH-signed JWT trigger authentication, and gotchas), see [architecture.md](references/architecture.md).
+For details on how Chain Now was built (CRE workflow, consumer contract, ETH-signed JWT trigger authentication, and gotchas), see [architecture.md](references/architecture.md).
 
 ## Key Constraints
 

@@ -1,8 +1,8 @@
-# chain.now Architecture — Building a CRE-Backed Web Integration
+# Chain Now Architecture — Building a CRE-Backed Web Integration
 
-This reference covers how chain.now was built, the lessons learned, and how to replicate the pattern for your own CRE-powered applications.
+This reference covers how Chain Now was built, the lessons learned, and how to replicate the pattern for your own CRE-powered applications.
 
-> **Note:** chain.now is currently live on **Ethereum Sepolia** only. The architecture is chain-agnostic and designed for 22+ EVM chains — additional deployments are coming soon.
+> **Note:** Chain Now is currently live on **8 testnets**. The architecture is chain-agnostic and designed for 22+ EVM chains — additional deployments are coming soon.
 
 ## System Components
 
@@ -168,7 +168,7 @@ const checksumAddr = getAddress(process.env.REGISTRY_SEPOLIA);
 ```
 
 ### 3. No execution status API from CRE
-After triggering a workflow, the gateway returns `"status": "ACCEPTED"` with a `workflow_execution_id`. There is currently no API to query that execution's result. Build your own status resolution — chain.now polls the on-chain contract directly.
+After triggering a workflow, the gateway returns `"status": "ACCEPTED"` with a `workflow_execution_id`. There is currently no API to query that execution's result. Build your own status resolution — Chain Now polls the on-chain contract directly.
 
 ### 4. Mainnet RPC required for testnet deploys
 `cre workflow deploy` requires an Ethereum mainnet RPC in `project.yaml` even for testnet-only workflows, because the Workflow Registry contract lives on mainnet.
