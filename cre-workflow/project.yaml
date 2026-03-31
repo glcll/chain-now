@@ -39,6 +39,20 @@ staging-settings:
       url: https://ethereum-sepolia-rpc.publicnode.com
     - chain-name: ethereum-testnet-sepolia-base-1
       url: https://base-sepolia-rpc.publicnode.com
+    - chain-name: ethereum-testnet-sepolia-arbitrum-1
+      url: https://arbitrum-sepolia-rpc.publicnode.com
+    - chain-name: ethereum-testnet-sepolia-optimism-1
+      url: https://optimism-sepolia-rpc.publicnode.com
+    - chain-name: polygon-testnet-amoy
+      url: https://polygon-amoy-bor-rpc.publicnode.com
+    - chain-name: avalanche-testnet-fuji
+      url: https://avalanche-fuji-c-chain-rpc.publicnode.com
+    - chain-name: ethereum-testnet-sepolia-worldchain-1
+      url: https://worldchain-sepolia.g.alchemy.com/public
+    - chain-name: ethereum-testnet-sepolia-zksync-1
+      url: https://sepolia.era.zksync.dev
+    - chain-name: ink-testnet-sepolia
+      url: https://rpc-gel-sepolia.inkonchain.com
 
 # ==========================================================================
 production-settings:
@@ -49,4 +63,18 @@ production-settings:
       url: https://ethereum-sepolia-rpc.publicnode.com
     - chain-name: ethereum-testnet-sepolia-base-1
       url: https://base-sepolia-rpc.publicnode.com
+    - chain-name: ethereum-testnet-sepolia-arbitrum-1
+      url: https://arbitrum-sepolia-rpc.publicnode.com
+    - chain-name: ethereum-testnet-sepolia-optimism-1
+      url: https://optimism-sepolia-rpc.publicnode.com
+    - chain-name: polygon-testnet-amoy
+      url: https://polygon-amoy-bor-rpc.publicnode.com
+    - chain-name: avalanche-testnet-fuji
+      url: https://avalanche-fuji-c-chain-rpc.publicnode.com
+    - chain-name: ethereum-testnet-sepolia-worldchain-1
+      url: https://worldchain-sepolia.g.alchemy.com/public
+    - chain-name: ethereum-testnet-sepolia-zksync-1
+      url: https://sepolia.era.zksync.dev
+    - chain-name: ink-testnet-sepolia
+      url: https://rpc-gel-sepolia.inkonchain.com
 
