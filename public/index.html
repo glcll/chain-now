@@ -208,21 +208,27 @@
       top: calc(100% + 10px);
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(15, 23, 42, 0.97);
       border: 1px solid rgba(34, 197, 94, 0.25);
       border-radius: 10px;
-      padding: 10px 16px;
+      padding: 12px 18px;
       font-size: 12px;
       font-weight: 500;
       color: #94a3b8;
-      white-space: nowrap;
-      z-index: 100;
+      z-index: 9999;
       pointer-events: none;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(12px);
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 20px;
+    }
+
+    .hero-badge-tooltip span {
+      white-space: nowrap;
     }
 
     .hero-badge-live:hover .hero-badge-tooltip {
-      display: block;
+      display: grid;
     }
 
     .hero-badge-dot {
@@ -931,7 +937,7 @@
         <div class="hero-badge hero-badge-live" style="position: relative; cursor: default;">
           <div class="hero-badge-dot hero-badge-dot-live"></div>
           Live on 8 chains
-          <div class="hero-badge-tooltip">Ethereum Sepolia · Base Sepolia · Arbitrum Sepolia · OP Sepolia · Polygon Amoy · Avalanche Fuji · World Chain Sepolia · Ink Sepolia</div>
+          <div class="hero-badge-tooltip"><span>Arbitrum Sepolia</span><span>Avalanche Fuji</span><span>Base Sepolia</span><span>Ethereum Sepolia</span><span>Ink Sepolia</span><span>OP Sepolia</span><span>Polygon Amoy</span><span>World Chain Sepolia</span></div>
         </div>
       </div>
       <h1 class="animate-in delay-1">
