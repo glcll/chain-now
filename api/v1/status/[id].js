@@ -1,4 +1,4 @@
-import { createPublicClient, http, stringToHex, getAddress } from "viem";
+import { createPublicClient, http, stringToHex, getAddress, parseAbiItem } from "viem";
 import { getChain, explorerTxUrl } from "../../../lib/chains.js";
 
 const KV_REST_API_URL = process.env.KV_REST_API_URL;
@@ -18,6 +18,10 @@ const DATA_REGISTRY_ABI = [
     type: "function",
   },
 ];
+
+const DATA_WRITTEN_EVENT = parseAbiItem(
+  "event DataWritten(bytes32 indexed key, bytes value, uint256 timestamp, bytes32 workflowId)"
+);
 
 async function kvGet(key) {
   const res = await fetch(`${KV_REST_API_URL}/get/${encodeURIComponent(key)}`, {
@@ -61,9 +65,31 @@ async function checkOnchain(record) {
     const [, timestamp, , exists] = result;
     if (!exists) return null;
 
+    let txHash = null;
+    try {
+      const blockNumber = await client.getBlockNumber();
+      const lookbackBlocks = 5000n;
+      const fromBlock = blockNumber > lookbackBlocks ? blockNumber - lookbackBlocks : 0n;
+
+      const logs = await client.getLogs({
+        address: checksumAddr,
+        event: DATA_WRITTEN_EVENT,
+        args: { key: keyBytes32 },
+        fromBlock,
+        toBlock: "latest",
+      });
+
+      if (logs.length > 0) {
+        txHash = logs[logs.length - 1].transactionHash;
+      }
+    } catch (err) {
+      console.error("Event log lookup failed (non-fatal):", err.message);
+    }
+
     return {
       timestamp: Number(timestamp),
       confirmedAt: new Date(Number(timestamp) * 1000).toISOString(),
+      txHash,
     };
   } catch (err) {
     console.error("Onchain check failed:", err.message);
@@ -93,6 +119,10 @@ export default async function handler(req, res) {
         record.status = "confirmed";
         record.updatedAt = new Date().toISOString();
         record.onchainTimestamp = onchainResult.confirmedAt;
+        if (onchainResult.txHash) {
+          record.txHash = onchainResult.txHash;
+          record.explorerUrl = explorerTxUrl(record.chain, onchainResult.txHash);
+        }
         try {
           await kvSet(`write:${id}`, record, 86400 * 7);
         } catch (_) {}
