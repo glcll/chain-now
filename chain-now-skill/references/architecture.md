@@ -64,7 +64,7 @@ const onHttpTrigger = (runtime, payload) => {
   return evmClient.writeReport(runtime, {
     receiver: registryAddress,
     report,
-    gasConfig: { gasLimit: "500000" },
+    gasConfig: { gasLimit: "5000000" },
   }).result()
 }
 ```
