@@ -2,7 +2,7 @@
 name: chain-now
 description: >-
   Write arbitrary data on-chain via a single REST API call, powered by Chainlink
-  CRE. Currently live on 8 testnets with more chains coming soon. Use when
+  CRE. Currently live on 9 testnets with more chains coming soon. Use when
   an agent needs to persist data on-chain, store key/value pairs on a blockchain,
   write agent state on-chain, or interact with Chain Now's API.
 license: MIT
@@ -17,7 +17,7 @@ metadata:
 
 Write data on-chain with a single HTTP call. No wallets, gas, ABI encoding, or blockchain knowledge required.
 
-> **Currently live on 8 testnets.** The architecture supports 22+ EVM chains — mainnets coming soon.
+> **Currently live on 9 testnets.** The architecture supports 22+ EVM chains — mainnets coming soon.
 
 **Base URL:** `https://chain-now.vercel.app`
 
@@ -172,8 +172,9 @@ curl -s https://chain-now.vercel.app/api/v1/read/ethereum-sepolia/agent-result |
 - **Avalanche Fuji** — `avalanche-fuji`
 - **World Chain Sepolia** — `world-chain-sepolia`
 - **Ink Sepolia** — `ink-sepolia`
+- **ZKSync Era Sepolia** — `zksync-sepolia`
 
-**Coming soon:** `ethereum`, `arbitrum`, `base`, `optimism`, `polygon`, `avalanche`, `bnb`, `scroll`, `linea`, `sonic`, `world-chain`, `zksync`, `celo`, `gnosis`, `mantle`, `ink`, `zksync-sepolia`
+**Coming soon:** `ethereum`, `arbitrum`, `base`, `optimism`, `polygon`, `avalanche`, `bnb`, `scroll`, `linea`, `sonic`, `world-chain`, `zksync`, `celo`, `gnosis`, `mantle`, `ink`
 
 The architecture supports all 22+ EVM chains in the Chainlink Runtime Environment. Each chain requires a deployed DataRegistry contract. Call `GET /api/v1/chains` for the live list.
 

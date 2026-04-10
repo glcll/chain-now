@@ -4,7 +4,7 @@
 
 Write data to any EVM chain with a single API call. No wallets, no gas, no ABI encoding. Your agent sends JSON — we put it onchain.
 
-> **Currently live on 8 testnets.** Mainnet support is coming soon.
+> **Currently live on 9 testnets.** Mainnet support is coming soon.
 
 **Live at:** https://chain-now.vercel.app
 
@@ -43,6 +43,7 @@ curl https://chain-now.vercel.app/api/v1/read/ethereum-sepolia/my-agent
 - Avalanche Fuji
 - World Chain Sepolia
 - Ink Sepolia
+- ZKSync Era Sepolia
 
 **Coming soon:** Ethereum, Arbitrum, Base, Optimism, Polygon, Avalanche, BNB Chain, Scroll, Linea, Sonic, zkSync Era, World Chain, Celo, Gnosis, Mantle, Ink, and additional testnets.
 
