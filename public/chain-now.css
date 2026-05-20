@@ -738,9 +738,18 @@ body {
 }
 
 /* ─── Skill section ─── */
+.skill-demo {
+  display: inline-grid;
+  grid-template-columns: max-content;
+  margin: 32px auto 0;
+  max-width: 100%;
+}
+
 .skill-install-box {
-  max-width: 640px;
-  margin: 0 auto;
+  grid-row: 1;
+  width: 0;
+  min-width: 100%;
+  margin: 0;
   background: var(--cn-primary);
   border-radius: var(--cn-radius-sm);
   overflow: hidden;
@@ -783,11 +792,12 @@ body {
 }
 
 .skill-agents {
+  grid-row: 2;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  margin-top: 32px;
+  margin-top: 16px;
 }
 
 .skill-agent-chip {
